@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://custom_option_button.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+default_select_text = "Select an option                           -"
+Options = [ "Option1", "Option2", "Option3" ]
+
+[node name="SelectButton" type="Button" parent="."]
+margin_left = 200.0
+margin_top = 159.0
+margin_right = 220.0
+margin_bottom = 179.0
+toggle_mode = true
+shortcut_in_tooltip = false
+align = 0
+
+[node name="ColorRect" type="ColorRect" parent="SelectButton"]
+visible = false
+margin_top = 23.0
+margin_right = 129.0
+margin_bottom = 200.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SelectButton/ColorRect"]
+margin_right = 160.0
+margin_bottom = 177.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectButton/ColorRect/ScrollContainer"]
+
+[node name="AddButton" type="Button" parent="."]
+margin_left = 573.0
+margin_top = 159.0
+margin_right = 689.0
+margin_bottom = 179.0
+text = "Add New Button"
+
+[node name="RemoveButton" type="Button" parent="."]
+margin_left = 573.0
+margin_top = 194.0
+margin_right = 696.0
+margin_bottom = 214.0
+text = "Remove Selected"
+
+[connection signal="pressed" from="SelectButton" to="." method="_on_select_button_pressed"]
+[connection signal="pressed" from="AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="RemoveButton" to="." method="_on_remove_button_pressed"]
